@@ -60,11 +60,11 @@
 
 <script>
 function vidxx(sss) {
-    const embedUrl = `https://www.youtube.com/embed/${sss}?autoplay=1&rel=0&modestbranding=1`;
+    const embedUrl = `https://www.youtube.com/embed/${sss}`;
     document.getElementById('popzy').innerHTML = `
         <iframe 
             src="${embedUrl}" 
-            title="YouTube Video Player"
+            title="YouTube Video Player" sandbox="allow-scripts allow-same-origin allow-presentation" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
             allowfullscreen>
         </iframe>
