@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tagalog Anime 143 - Player</title>
+    <style>
+        /* Reset margins & fill screen with black background */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            color: #ffffff;
+            overflow: hidden; /* Prevents scrollbars */
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center;     /* Center vertically */
+        }
+
+        /* Container maintaining 16:9 ratio and responsiveness */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 100vw;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+            max-height: 100vh;
+        }
+
+        /* Target dynamically created iframe or popzy container */
+        .video-wrapper iframe, #popzy {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Responsive adjustment for mobile screens */
+        @media (max-aspect-ratio: 16/9) {
+            .video-wrapper {
+                width: 100vw;
+                height: calc(100vw * 9 / 16);
+                padding-top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="video-wrapper">
+        <div id="popzy"></div>
+    </div>
+
+<script>
+function vidxx(sss) {
+    const embedUrl = `https://www.youtube.com/embed/${sss}?autoplay=1&rel=0&modestbranding=1`;
+    document.getElementById('popzy').innerHTML = `
+        <iframe 
+            src="${embedUrl}" 
+            title="YouTube Video Player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+        </iframe>
+    `;
+}
+
+function handleUrlHash() {
+    const hash = window.location.hash;
+    if (hash.includes('vid=')) {
+        const match = hash.match(/vid=([^&]+)/);
+        if (match && match[1]) {
+            const vid = match[1];
+            vidxx(vid);
+        }
+    }
+} // Fixed: Added missing closing bracket
+
+// Listen for page load & hash changes
+window.addEventListener('DOMContentLoaded', handleUrlHash);
+window.addEventListener('hashchange', handleUrlHash);
+</script>
+
+</body>
+</html>
