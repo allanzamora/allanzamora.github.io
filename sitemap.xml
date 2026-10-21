@@ -7,10 +7,24 @@
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
-
     <url>
-        <loc>https://allanzamora.github.io/posts/post-two-no-date.html</loc>
+        <loc>https://allanzamora.github.io/app-senpaitambayan.html</loc>
         <priority>0.8</priority>
     </url>
-
+    <url>
+        <loc>https://allanzamora.github.io/app-tagdubtvph.html</loc>
+        <priority>0.8</priority>
+    </url>
+     <url>
+        <loc>https://allanzamora.github.io/app-animerevival.html</loc>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://allanzamora.github.io/app-bitzmedia.html</loc>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://allanzamora.github.io/app-pinoyflix.html</loc>
+        <priority>0.8</priority>
+    </url>
 </urlset>
