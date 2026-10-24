@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode XML Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #00E5FF;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            background-color: #1E1E24;
+            border: 1px solid #333;
+            color: #fff;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #00E5FF;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #00b3cc;
+        }
+        textarea {
+            width: 100%;
+            height: 250px;
+            background-color: #1a1a1a;
+            color: #d4d4d4;
+            font-family: monospace;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #333;
+            margin-top: 15px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>XML Episode Generator</h2>
+
+    <div class="form-group">
+        <label for="tagInput">Tag:</label>
+        <input type="text" id="tagInput" placeholder="e.g. anime" value="anime">
+    </div>
+
+    <div class="form-group">
+        <label for="idInput">ID:</label>
+        <input type="text" id="idInput" placeholder="e.g. 123" value="123">
+    </div>
+
+    <div class="form-group">
+        <label for="maxResultInput">Max Results:</label>
+        <input type="number" id="maxResultInput" placeholder="e.g. 10" value="10">
+    </div>
+
+    <button id="generateBtn">Generate XML</button>
+
+    <div class="form-group">
+        <label for="resultArea">Result Output:</label>
+        <textarea id="resultArea" readonly></textarea>
+    </div>
+
+    <script>
+        document.getElementById('generateBtn').addEventListener('click', function() {
+            const tag = document.getElementById('tagInput').value.trim();
+            const id = document.getElementById('idInput').value.trim();
+            const maxResult = parseInt(document.getElementById('maxResultInput').value) || 0;
+            const resultArea = document.getElementById('resultArea');
+
+            let xmlOutput = '<?xml version="1.0" encoding="utf-8"?>\n<season>\n';
+
+            // Loop from 1 up to maxResult
+            for (let i = 1; i <= maxResult; i++) {
+                xmlOutput += `    <item>\n`;
+                xmlOutput += `        <title>Episode ${i}</title>\n`;
+                xmlOutput += `        <url>https://example.com/${tag}/${id}/${i}</url>\n`;
+                xmlOutput += `    </item>\n`;
+            }
+
+            xmlOutput += '</season>';
+
+            // Show final result inside the textarea
+            resultArea.value = xmlOutput;
+        });
+    </script>
+
+</body>
+</html>
